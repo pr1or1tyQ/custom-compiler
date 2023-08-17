@@ -1,0 +1,5 @@
+﻿my_function()
+int x;
+
+
+main(){}

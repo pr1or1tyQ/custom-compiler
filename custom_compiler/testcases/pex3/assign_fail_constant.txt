@@ -1,0 +1,1 @@
+CONST int x = 2main(){	x = 5;}

@@ -1,0 +1,5 @@
+funcCall();
+
+main(){
+
+}

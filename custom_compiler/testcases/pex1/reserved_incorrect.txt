@@ -1,0 +1,7 @@
+﻿iff
+elif
+for
+string
+integer
+realy
+CONSTANT

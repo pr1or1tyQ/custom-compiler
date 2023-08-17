@@ -1,0 +1,6 @@
+CONST int x = 2
+CONST x y = 2.1
+CONST word z = "hello"
+
+main() {
+}

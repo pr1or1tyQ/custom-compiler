@@ -1,0 +1,284 @@
+﻿// ------------------------------------------------------------
+// Variable Declaration Test
+// ------------------------------------------------------------
+Test_one() {
+   printString("Variable Declaration Test");
+   printLine();
+   // Declares a bunch of variables
+   int i;
+   i = 1;
+
+   float f_one;
+   f_one = -2.3;
+
+   float f_two;
+   f_two = 3.4e5;
+
+   string s;
+   s = "hello world";
+
+    // Print out the variables
+    //how to print a new line ?***
+    //****do you need to print a string with each variable or can you just print the values***?
+    printString("i = ");
+    printInt(i);
+    printLine();
+    printString("float_one = ");
+    printFloat(f_one);
+    printLine();
+    printString("float_two = ");
+    printFloat(f_two);
+    printLine();
+    printString("s = ");
+    printString(s);
+    printLine();
+    printLine();
+  }
+
+// ------------------------------------------------------------
+// Variable Assignment Test
+// ------------------------------------------------------------
+Test_two() {
+   printString("Variable Assignment Test");
+   printLine();
+   int x;
+   x = 0;
+
+   float y;
+   y = 1.2;
+
+   string s;
+   s = "original string";
+
+   printString("x original: ");
+   printInt(x);
+   printLine();
+   printString("y original: ");
+   printFloat(y);
+   printLine();
+   printString("s original: ");
+   printString(s);
+   printLine();
+
+   x = 12345;
+   y = -6.789;
+   s = "dog goes \"woof\", cat goes \"meow\", but what does the fox say \\ sarcasm";
+
+   printString("x: final ");
+   printInt(x);
+   printLine();
+   printString("y: final ");
+   printFloat(y);
+   printLine();
+   printString("s: final ");
+   printString(s);
+   printLine();
+   printLine();
+  }
+
+// ------------------------------------------------------------
+// Math Operation Test
+// ------------------------------------------------------------
+   Test_three() {
+   printString("Math Operation Test");
+   printLine();
+    // Testing Integers
+    int x;
+    x = 5 - 4 + 4;
+    x = x * 2 / 2;
+    x = (x * x) * (5 - 5);
+    printString("x = ");
+    printInt(x);
+    printLine();
+
+    // Testing Floats (don't worry if the rounding is a little off)
+    float y;
+    y = 10.44 + 9.79 - 10.115;
+    y = -1.0 * ( y * (2.0 / 1.0));
+    printString("y = ");
+    printFloat(y);
+    printLine();
+    printLine();
+  }
+
+  // ------------------------------------------------------------
+  // Relational Operators
+  // ------------------------------------------------------------
+Test_four() {
+   printString("Relational Operator Test");
+   printLine();
+   if (5 > 2) {
+      printString("Greater than works");
+      printLine();
+   }
+   if (2 < 5) {
+      printString("Less than works");
+      printLine();
+   }
+   if (4 >= 4) {
+      printString("Greater than or equal works");
+      printLine();
+   }
+   if (4 <= 4) {
+      printString("Less than or equal works");
+      printLine();
+   }
+   if (5.0 == 5.0) {
+      printString("Equals works");
+      printLine();
+   }
+   if (2.5 != 3.0) {
+      printString("Not Equals works");
+      printLine();
+   }
+    printLine();
+    printLine();
+}
+
+// ------------------------------------------------------------
+// Boolean Operators
+// ------------------------------------------------------------
+Test_five() {
+   printString("Boolean Operator Test");
+   printLine();
+   if ((1 < 2) AND (2 < 3)) {
+      printString("And works");
+      printLine();
+   }
+   if (((2 < 1) OR (2 < 2)) OR (-3 > -10)) {
+      printString("Or works");
+      printLine();
+   }
+   if (NOT(2 < 1)) {
+      printString("Not works");
+      printLine();
+   }
+    printLine();
+    printLine();
+}
+
+// ------------------------------------------------------------
+// Control Structures:  If Statements
+// ------------------------------------------------------------
+Test_six() {
+   printString("If Statement Test");
+   printLine();
+   if (1.0 + 1.0 < 3.0) {
+      printString("If (true) Statement Passes");
+      printLine();
+   }
+   else {
+      printString("If (true) Statement Fails");
+      printLine();
+   }
+   if (5.0 * 3.0 < 1) {
+      printString("If (false) Statement Fails");
+      printLine();
+   }
+   else {
+      printString("If (false) Statement Passes");
+      printLine();
+   }
+    printLine();
+   // Testing to See if Function Calls within a Function Work
+   Test_seven();
+  }
+
+// ------------------------------------------------------------
+// Control Structures:  Nested If Statements
+// ------------------------------------------------------------
+Test_seven() {
+   printString("Nested If Statement Test");
+   printLine();
+
+   if (3 > 2) {
+      if (5 < 4) {
+         printString("Nested If Statement Fails");
+         printLine();
+      }
+      else {
+        printString("Nested If Statement Passes");
+        printLine();
+      }
+   }
+    printLine();
+    printLine();
+}
+
+// ------------------------------------------------------------
+// Control Structures:  While Statements
+// ------------------------------------------------------------
+Test_eight() {
+   printString("While Loop Test");
+   printLine();
+   int i;
+   i = 0;
+
+   while (i < 10) {
+      printInt(i);
+      printString(", ");
+
+      i = i + 1;
+    }
+   printLine();
+   printString("Loop Complete");
+   printLine();
+   printLine();
+
+   // Testing to See if Function Calls within a Function Work
+   Test_nine();
+  }
+
+// ------------------------------------------------------------
+// Control Structures:  Nested While Statements
+// ------------------------------------------------------------
+Test_nine() {
+   printString("Nested While Loop Test");
+   printLine();
+
+   int x;
+   x = 0;
+   int y;
+   y = 0;
+
+   while (y < 3) {
+      while (x < 3) {
+
+      printString("x: ");
+      printInt(x);
+      printString(" ,y: ");
+      printInt(y);
+      printString("; ");
+
+      x = x + 1;
+      }
+   x = 0;
+   y = y + 1;
+   }
+
+   printLine();
+   printString("Loop Complete");
+   printLine();
+   printLine();
+}
+
+// ------------------------------------------------------------
+// Main Program
+// ------------------------------------------------------------
+main() {
+    printString("Begin Main Program Test:");
+    printLine();
+
+    Test_one();
+    Test_two();
+    Test_three();
+    Test_four();
+    Test_five();
+    Test_six();
+    // Test 7 Is Called in Test6()
+    Test_eight();
+    // Test 9 is Called in Test8()
+
+    printLine();
+    printString("Main Program Test Complete");
+  }

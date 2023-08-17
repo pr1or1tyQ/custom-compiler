@@ -1,0 +1,4 @@
+﻿CONST int the_num = 23;
+
+main(){
+}

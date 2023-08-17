@@ -1,0 +1,5 @@
+﻿main(){
+foo(x,y,a,b);
+bar(z);
+baz();
+}

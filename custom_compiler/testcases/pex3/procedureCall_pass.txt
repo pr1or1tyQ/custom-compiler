@@ -1,0 +1,1 @@
+foo(int x, int y){}main(){	foo(5, 6);}

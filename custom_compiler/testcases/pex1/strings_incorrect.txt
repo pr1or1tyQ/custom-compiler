@@ -1,0 +1,6 @@
+﻿thisBadnope"
+"not escaped \ 
+not a valid string
+needs parenthiss
+1123428u34
+$$

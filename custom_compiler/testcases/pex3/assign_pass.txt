@@ -1,0 +1,11 @@
+main(){
+
+	int x;
+	real y;
+	word z;
+
+	x = 5;
+	y = 5.5;
+	z = "hello";
+
+}

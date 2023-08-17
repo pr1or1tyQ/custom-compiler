@@ -1,0 +1,7 @@
+﻿main(){
+foo( 18 , 22, "word", 2.2);
+bar(7);
+baz();
+function("send", -5);
+new_name("single_param");
+}

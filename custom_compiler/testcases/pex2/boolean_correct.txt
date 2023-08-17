@@ -1,0 +1,24 @@
+﻿main(){
+while(a){
+x = x + 1;
+}
+
+while(a OR b){
+x = x + 1;
+}
+
+while((a OR (b AND c)) NOT (x >= 3) ){
+x = x + 1;
+}
+
+while(x > 3){
+x = x + 1;
+}
+
+while((x * 10) == 23){
+x = x + 1;
+x = 5 + 7;
+}
+
+}
+

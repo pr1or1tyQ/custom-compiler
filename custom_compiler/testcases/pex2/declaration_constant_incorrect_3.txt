@@ -1,0 +1,4 @@
+﻿constant int a = 23
+
+main(){
+}

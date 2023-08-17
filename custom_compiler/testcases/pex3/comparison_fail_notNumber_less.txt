@@ -1,0 +1,12 @@
+main() {
+
+	int x;
+	x = 3;
+
+	if("bye" < "hello"){
+
+	x = x + 1;
+
+	}
+
+}

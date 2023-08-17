@@ -1,0 +1,5 @@
+﻿main(){
+while(a AND OR b){
+x = 5 - 5;
+}
+}

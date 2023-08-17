@@ -1,0 +1,9 @@
+﻿word al;
+word stringTest;
+int value;
+int _valid;
+int valid_value;
+real my_float;
+real pointFloat;
+CONST int check = 23
+CONST int new_constant = 2023

@@ -1,0 +1,5 @@
+main(){
+while_statement(a OR b){
+x = x + 1;
+}
+}

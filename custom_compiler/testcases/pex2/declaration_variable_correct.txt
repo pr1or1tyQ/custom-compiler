@@ -1,0 +1,5 @@
+﻿main(){
+int y;
+word myString;
+real my_floating_point;
+}

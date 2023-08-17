@@ -1,0 +1,9 @@
+﻿if
+else
+while
+word
+int
+real
+CONST
+main
+function

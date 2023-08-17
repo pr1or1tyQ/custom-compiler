@@ -1,0 +1,5 @@
+﻿not
+and
+or
+div
+&&

@@ -1,0 +1,132 @@
+// This tells SableCC to put all of the code in a package called CS426
+Package CS426;
+
+// Helpers are sets that let you talk about multiple characters in the same way
+Helpers
+	whitespaces = ' ' | 9 | 10 | 13;
+	natural = ['1'..'9'];
+	whole = ['0' + natural];
+	letter = [['a'..'z'] + ['A'..'Z']];
+
+//Lexer Portion
+Tokens
+	// Operations and EOL
+	assign = '=';
+	plus = '+';
+	sub = '-';
+	mult = '*';
+	div = '/';
+	eol = ';';
+	//underscore = '_';
+
+	// Logical tokens
+	log_and = 'AND';
+	log_or = 'OR';
+	log_not = 'NOT';
+	log_not_eq = '!=';
+	log_equiv = '==';
+	log_great = '>';
+	log_great_eq = '>=';
+	log_less = '<';
+	log_less_eq = '<=';
+
+	open_parenthesis = '(';
+	close_parenthesis = ')';
+	comma = ',';
+	l_curly = '{';
+	r_curly = '}';
+	escape = '\';
+
+	// Identifiers (variables, function names)
+	// Types
+	//type_word = 'word';
+	//type_int = 'int';
+	//type_real = 'real';
+	type_const = 'CONST';
+
+	// Reserved Words
+	if_def = 'if';
+	else_def = 'else';
+	while_def = 'while';
+	main_def = 'main';
+	function_def = 'function';
+
+	// Identifiers
+	//variable names
+	id = ('_'letter+ | letter+)*;
+
+	// Comments
+	comment = '//' ([[0..0xffff] - [10 + 13]])*;
+
+	// Literals
+	integer = natural whole* | '0';
+	float = ((natural | whole)* '.' (natural | whole)+);
+	float_exp = ((natural | whole)* '.' (natural | whole)+ 'e') ('-')? (whole)+; //floating point number in exponential notation
+	string = '"' ('\"' | '\\')* ([[0..0xffff] - [34 + 92]] | ('\"') | ('\\'))+ ('\"' | '\\')* '"';
+
+	// Whitespace
+	blank = whitespaces+;
+
+Ignored Tokens
+	blank, comment;
+
+
+//Parser Portion
+Productions
+	//program = statements;
+	program = constants functions main_function;
+
+	// functions
+	functions = {func_multiple} functions function | {single} ;
+	function = {funcdef} func_def;
+	
+	// statements
+	statements = {multiple} statement statements | {single} ;
+	statement = {declaration} declare_statement | {assignment} assign_statement | {cond} conditional_statement| {proccall} proc_call;
+
+	// declarations
+	declare_statement = {var_declaration} variable_declare_statement | {const_declaration} constant_declare_statement;
+	variable_declare_statement = [type]:id [varname]:id eol;
+	constant_declare_statement = [const]:type_const [type]:id const_assign_statement;
+
+	// main defintion
+	main_function = main_def open_parenthesis close_parenthesis l_curly statements r_curly;
+
+	// function definition
+	func_def = {params} id open_parenthesis def_params close_parenthesis l_curly statements r_curly | {noparams} id open_parenthesis close_parenthesis l_curly statements r_curly;
+	def_params = {multiple} def_params comma def_param | {passingle} def_param;
+	def_param = [type]:id [varname]:id;
+
+	// procedure call
+	proc_call = {params} param_call | {noparams} no_params;
+	no_params = id open_parenthesis close_parenthesis eol;
+	param_call = id open_parenthesis params close_parenthesis eol;
+	params = {multiple} params comma param | {pass} param;
+	param = operand;
+
+	// assign statements
+	assign_statement ={variable_assign} variable_assign_statement;
+	variable_assign_statement = id assign expression eol;
+
+	constants = {constant_multiple} constants const_assign_statement| {single} ;
+	const_assign_statement = type_const [type]:id [varname]:id assign expression;
+	
+	//conditionals and loops
+	conditional_statement = {if} if_stat | {while} while_stat;
+	if_stat = {if} if_def open_parenthesis expression close_parenthesis l_curly statements r_curly else_stat;
+	else_stat = {something} else_def l_curly statements r_curly | {none};
+	while_stat = while_def open_parenthesis expression close_parenthesis l_curly statements r_curly;
+
+	// boolean expressions
+	expression = {or} [one]:expression5 log_or [two]:expression5 | {pass} expression2;
+	expression2 = {and} [one]:expression5 log_and [two]:expression5 | {pass} expression3;
+	expression3 = {not} log_not expression5 | {equal} [one]:expression5 log_equiv [two]:expression5 | {pass} expression4;
+	expression4 = {greater} [one]:expression5 log_great [two]:expression5 | {less} [one]:expression5 log_less [two]:expression5 | {greatequal} [one]:expression5 log_great_eq [two]:expression5 | {lessequal} [one]:expression5 log_less_eq [two]:expression5 | {notequal} [one]:expression5 log_not_eq [two]:expression5 | {pass} expression5;
+
+	// arithmetic expression
+	expression5 = {add} expression5 plus expression6 | {sub} expression5 sub expression6 | {pass} expression6;
+	expression6 = {multiply} expression6 mult expression7 |{divide} expression6 div expression7 | {pass} expression7;
+	expression7 = {negative} sub operand | {pass} operand1;
+	operand1 = {parenthesis} open_parenthesis expression close_parenthesis | {pass} operand;
+	operand = {int} integer | {variable} id | {string} string | {float} float | {float_exp} float_exp; 
+

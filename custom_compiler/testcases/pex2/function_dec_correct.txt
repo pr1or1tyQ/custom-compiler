@@ -1,0 +1,9 @@
+﻿myFunct(int xParam, word wordName){
+//function body
+}
+
+my_function(){
+int x;
+}
+
+main(){}

@@ -1,0 +1,3 @@
+﻿not a valid comment
+/bad comment
+::words
